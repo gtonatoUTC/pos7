@@ -1,0 +1,233 @@
+
+<html>
+ <script src="@{'public/javascripts/jquery-1.6.4.min.js'}"> </script>
+
+<link rel="stylesheet" type="text/css" href="public/stylesheets/thumbelina.css" />
+<link rel="javascript" type="text/js" href="public/javascripts/thumbelina.js" />
+
+<script type="text/javascript" src="public/javascripts/thumbelina.js"></script>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script>
+function CargarDatos(variables) {
+
+	document.getElementById("imagen").src = variables.src;
+	document.getElementById("codem").value = variables.id;
+	document.getElementById("descriptionm").value = variables.name;
+	document.getElementById("pricem").value = variables.alt;
+
+}
+</script>
+
+<script type="text/javascript">
+
+
+function evaluar() {
+
+	var can = document.getElementById("cantidadm").value
+	if (can=="") {
+		alert("Ingresar campos");
+	}else{
+			alert("Datos añadidos");
+		}
+}
+
+</script>
+
+
+
+<script type="text/javascript">
+$(function() {
+
+	$('#slider1').Thumbelina({
+		$bwdBut : $('#slider1 .left'), // Selector to left button.
+		$fwdBut : $('#slider1 .right')
+		// Selector to right button.
+	});
+});
+</script>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+
+
+table#t01 th	{
+    background-color: black;
+    color: white;
+}
+body{
+	margin:0;
+	padding:0;
+}
+
+#header {
+background-color: yellow;
+color: white;
+text-align: center;
+padding: 50px;
+height: 20px;
+}
+
+#menu {
+line-height: 30px;
+background-color: red;
+color: white;
+text-align: center;
+height: 100 px;
+width: 100%;
+float: left;
+padding: 5px;
+}
+
+#UTC{
+font-size:28px;
+}
+
+#slider1 {
+
+position: relative; /* Containers need relative or absolute position. */
+margin-left: 60px;
+background-color: #eeeeee;
+width: 256px;
+height: 120px;
+border-top: 1px solid #aaa;
+border-bottom: 1px solid #aaa;
+}
+
+#section2 {
+ line-height:30px;
+    background-color:#eeeeee;
+    height:600px;
+    width:500px;
+    float:left;
+    padding:5px;
+}
+
+
+
+#section4 {
+	line-height:30px;
+    height:600px;
+    width:500px;
+    float:left;
+    padding:5px;
+
+}
+
+#section3 {
+	line-height:30px;
+    background-color:geen;
+    height:600px;
+    width:560px;
+    float:left;
+    padding:5px;
+
+}
+
+#fin {
+line-height: 30px;
+background-color: black;
+color: white;
+text-align: center;
+height: 100 px;
+width: 100%;
+float: left;
+padding: 5px;
+}
+
+#header section img{
+margin-top:-45px;
+}
+
+div h1{
+	margin-left: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<div id="header">
+<section><div id="UTC">Universidad Tecnica de Cotopaxi</div></section>
+<section>
+
+</section>
+<section>
+
+</section>
+</div>
+
+
+<div id="menu">La Mana- Sigchos-Pangua</div>
+
+#{form id:'itemForm', action:@Application.ingresarItem(), method:'POST',
+enctype:'multipart/form-data' }
+
+<div id="section2">
+
+<h1>CATALOGO</h1>
+
+
+
+<section id="slider1">
+<div class="thumbelina-but horiz left">&#706;</div>
+
+<ul>
+<li><img id="12" name="incaKola" alt="2.00" src="public/images/incaKola.jpg" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+<li><img id="45" name="cocaCola" alt="1.50" src="public/images/cocaCola.png" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+<li><img id="56" name="Fanta" alt="1.35" src="public/images/fanta.jpg" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+<li><img id="67" name="Fioravanti" alt="1.00" src="public/images/fioravanti.jpg" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+<li><img id="87" name="Nestea" alt="1.10" src="public/images/nestea.jpg" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+<li><img id="23" name="Sprite" alt="0.98" src="public/images/sprite.png" width="100px" height="100px" onclick="CargarDatos(this);"></li>
+</ul>
+
+<div class="thumbelina-but horiz right">&#707;</div>
+
+</section>
+</div>
+
+<div id="section4">
+<section>
+
+<center><img id="imagen" name="img" alt="" src="public/images/cocaCola.png" width="100px"
+		height="100px" onmouseover="evaluar1();"></center>
+		<center><table border="1">
+		<thead>
+		<tr>
+		<th>Codigo</th>
+		<th>Descripcion</th>
+		<th>Precio</th>
+		<th>Cantidad</th>
+		<th>Accion</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		#{field 'codem'}<td><input type="text" id="codem" name="${field.name}" size="5px"></td>#{/field}
+		#{field 'descriptionm'}<td><input type="text" id="descriptionm" name="${field.name}"size="10px"></td>#{/field}
+		#{field 'pricem'}<td><input type="text" id="pricem" name="${field.name}" size="5px"></td>#{/field}
+		#{field 'cantidadm'}<td><input type="text" id="cantidadm" name="${field.name}" size="5px"></td>#{/field}
+		<td><input type="submit" id="btnañadir" value="Añadir" onclick="evaluar();" size="5px"></td>
+		
+		</tr>
+		</tbody>
+		</table></center>
+		
+	</section>
+	</div>
+	</table></center>
+	#{/form}
+	</div>
+	<div id ="fin"> prueba</div>
+			</body>
+		</html>
+
